@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">快乐工作日</string>
+    <string name="action_settings">关于</string>
+
+    <string name="fragment_one">计算</string>
+    <string name="fragment_two">查询</string>
+    <string name="fragment_three">概述</string>
+    <string name="fragment_about">About</string>
+
+    <string name="number1">I</string>
+    <string name="number2">II</string>
+    <string name="number3">III</string>
+
+    <string name="fragment">Fragment</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="user_name">Huang Qing</string>
+    <string name="user_email">你用电，我用心</string>
+
+    <string name="content_description">image view</string>
+
+
+    <string name="about_text">一、元旦：1月1日放假，与周末连休。
+　　\n二、春节：2月7日至13日放假调休，共7天。2月6日（星期六）、2月14日（星期日）上班。
+　　\n三、清明节：4月4日放假，与周末连休。
+　　\n四、劳动节：5月1日放假，5月2日（星期一）补休。
+　　\n五、端午节：6月9日至11日放假调休，共3天。6月12日（星期日）上班。
+　　\n六、中秋节：9月15日至17日放假调休，共3天。9月18日（星期日）上班。
+　　\n七、国庆节：10月1日至7日放假调休，共7天。10月8日（星期六）、10月9日（星期日）上班。</string>
+    <string name="about_text2">2017年放假安排暂时参考2016年安排</string>
+    <string name="about_author">Author: lforce</string>
+    <string name="about_contact">Contact: lforce@qq.com</string>
+    <string name="about_libraries">Libraries:</string>
+    <string name="about_butterknife">ButterKnife by Jake Wharton</string>
+    <string name="about_robototextview">RobotoTextView by Evgeny Shishkin</string>
+    <string name="about_msg_subject">[NavigationDrawerSI]</string>
+    <string name="about_mail_chooser">Send with</string>
+    <string name="about_intent_failed">The requested application could not be launched.</string>
+    <string name="entry_date">录入日期</string>
+    <string name="get_today">现在日期</string>
+    <string name="calc_expire">计算到期日</string>
+    <string name="entry_userid">用户户号</string>
+    <string name="entry_usernote">用户备注</string>
+    <string name="save_expire">保存用户</string>
+    <string name="please_input_date">请选择日期，或点击现在日期</string>
+</resources>

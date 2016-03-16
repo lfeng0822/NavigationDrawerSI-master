@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/ScrollView">
+
+    <LinearLayout
+        android:id="@+id/fragmentAbout"
+        style="@style/LinearLayout"
+        android:padding="@dimen/default_padding">
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/aboutTextView"
+            style="@style/Wrap"
+            app:typeface="roboto_light" />
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/aboutTextViewAdditionalText"
+            style="@style/Wrap"
+            app:typeface="roboto_light" />
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/aboutAuthor"
+            style="@style/Wrap"
+            android:layout_marginTop="@dimen/action_bar_height"
+            android:text="@string/about_author"
+            android:textSize="@dimen/text_size_medium"
+            app:fontFamily="roboto" />
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/aboutContact"
+            style="@style/Wrap"
+            android:text="@string/about_contact"
+            android:textSize="@dimen/text_size_medium"
+            app:typeface="roboto_light" />
+
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/aboutLibraries"
+            style="@style/Wrap"
+            android:layout_marginTop="@dimen/action_bar_height"
+            android:text="@string/about_libraries"
+            app:fontFamily="roboto" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/grey_font"></View>
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/aboutButter"
+            style="@style/Wrap"
+            android:layout_marginTop="@dimen/default_padding"
+            android:text="@string/about_butterknife"
+            app:typeface="roboto_light" />
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            android:id="@+id/aboutTV"
+            style="@style/Wrap"
+            android:layout_marginTop="@dimen/default_padding"
+            android:text="@string/about_robototextview"
+            app:typeface="roboto_light" />
+
+
+    </LinearLayout>
+
+</ScrollView>

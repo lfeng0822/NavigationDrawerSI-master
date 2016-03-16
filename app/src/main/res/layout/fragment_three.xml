@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragmentThree"
+    style="@style/Match">
+
+    <LinearLayout
+        android:id="@id/circleLayout"
+        style="@style/Wrap"
+        android:layout_centerInParent="true"
+        android:background="@drawable/background_circle"
+        android:orientation="vertical"
+        android:padding="@dimen/default_small_padding">
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            style="@style/RobotoTextView.Number"
+            android:text="@string/number3"
+            app:typeface="roboto_light" />
+
+        <com.devspark.robototextview.widget.RobotoTextView
+            style="@style/RobotoTextView.Fragment"
+            android:text="@string/fragment"
+            app:typeface="roboto_thin_italic" />
+    </LinearLayout>
+
+</RelativeLayout>
