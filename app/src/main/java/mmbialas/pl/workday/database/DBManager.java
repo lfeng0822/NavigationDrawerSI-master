@@ -51,6 +51,29 @@ public class DBManager {
         }
     }
 
+
+    public boolean isAccountExist(Account account) {
+        Cursor cursor = null;
+        boolean isExist = false;
+        int accountId = account._id;
+        String sql = "";
+        //String sql = select count( *)as c from sqlite_master where type = 'table' and name = '+tabName.trim()+';
+        try {
+            cursor = db.rawQuery("SELECT * FROM " + DatabaseHelper.TABLE_NAME, null);
+            if (cursor.moveToNext()) {
+                int count = cursor.getInt(0);
+                if (count > 0) {
+                    isExist = true;
+                }
+            }
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
+
+        return isExist;
+    }
+
+
     public void add(Account account) {
         Log.d("DBManager", "DBManager --> add");
         // 采用事务处理，确保数据完整性
@@ -58,7 +81,7 @@ public class DBManager {
         try {
 
             db.execSQL("INSERT INTO " + DatabaseHelper.TABLE_NAME
-                    + " VALUES( ?, ?, ?)", new Object[]{account._id,account.date,
+                    + " VALUES( ?, ?, ?)", new Object[]{account._id, account.date,
                     account.info});
             // 带两个参数的execSQL()方法，采用占位符参数？，把参数值放在后面，顺序对应
             // 一个参数的execSQL()方法中，用户输入特殊字符时需要转义
