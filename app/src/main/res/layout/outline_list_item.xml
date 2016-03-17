@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+    <TextView
+        android:layout_width="100px"
+        android:layout_height="wrap_content"
+        android:textSize="20px"
+        android:id="@+id/accountId"
+        />
+
+    <TextView
+        android:layout_width="200px"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/accountId"
+        android:layout_alignTop="@id/accountId"
+        android:gravity="center_horizontal"
+        android:textSize="20px"
+        android:id="@+id/expireDate"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/expireDate"
+        android:layout_alignTop="@id/expireDate"
+        android:textSize="20px"
+        android:id="@+id/accountInfo"
+        />
+</RelativeLayout>

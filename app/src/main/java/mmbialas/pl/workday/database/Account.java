@@ -7,6 +7,7 @@ package mmbialas.pl.workday.database;
 public class Account
 {
     public int _id;
+    public String accountId;
     public String date;
     public String info;
 
@@ -14,9 +15,9 @@ public class Account
     {
     }
 
-    public Account(int id,String date, String info)
+    public Account(String accountId,String date, String info)
     {
-        this._id = id;
+        this.accountId = accountId;
         this.date = date;
         this.info = info;
     }

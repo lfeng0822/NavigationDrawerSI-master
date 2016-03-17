@@ -39,7 +39,7 @@ public class DBManager {
         try {
             for (Account account : accounts) {
                 db.execSQL("INSERT INTO " + DatabaseHelper.TABLE_NAME
-                        + " VALUES(null, ?, ?, ?)", new Object[]{account.date,
+                        + " VALUES(null, ?, ?, ?)", new Object[]{account.accountId,account.date,
                         account.info});
                 // 带两个参数的execSQL()方法，采用占位符参数？，把参数值放在后面，顺序对应
                 // 一个参数的execSQL()方法中，用户输入特殊字符时需要转义
@@ -55,9 +55,9 @@ public class DBManager {
     public boolean isAccountExist(Account account) {
         Cursor cursor = null;
         boolean isExist = false;
-        int accountId = account._id;
+        String accountId = account.accountId;
         try {
-            cursor = db.rawQuery("SELECT * FROM " + DatabaseHelper.TABLE_NAME + "where _id =" + accountId, null);
+            cursor = db.rawQuery("select  * from " + DatabaseHelper.TABLE_NAME + " where accountId=?", new String[]{accountId});
             if (cursor.moveToNext()) {
                 int count = cursor.getInt(0);
                 if (count > 0) {
@@ -79,7 +79,7 @@ public class DBManager {
         try {
 
             db.execSQL("INSERT INTO " + DatabaseHelper.TABLE_NAME
-                    + " VALUES( ?, ?, ?)", new Object[]{account._id, account.date,
+                    + " VALUES( null,?, ?, ?)", new Object[]{account.accountId, account.date,
                     account.info});
             // 带两个参数的execSQL()方法，采用占位符参数？，把参数值放在后面，顺序对应
             // 一个参数的execSQL()方法中，用户输入特殊字符时需要转义
@@ -129,7 +129,7 @@ public class DBManager {
         Cursor c = queryTheCursor();
         while (c.moveToNext()) {
             Account account = new Account();
-            account._id = c.getInt(c.getColumnIndex("_id"));
+            account.accountId = c.getString(c.getColumnIndex("getString"));
             account.date = c.getString(c.getColumnIndex("date"));
             account.info = c.getString(c.getColumnIndex("info"));
             persons.add(account);

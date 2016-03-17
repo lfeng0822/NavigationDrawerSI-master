@@ -39,7 +39,7 @@ public class FragmentOne extends Fragment implements View.OnClickListener {
     private Context mContext;
     private Date mDate;
     private DBManager dbManager;
-    private int accountId;
+    private String accountId;
     private String accountDate;
     private String accountInfo;
 
@@ -447,11 +447,16 @@ public class FragmentOne extends Fragment implements View.OnClickListener {
     private void saveAccountToDatebase() {
         if (accountDate != null && !accountDate.equals("")) {
             if (!editEntryUserId.getText().equals("")) {
-                accountId = Integer.parseInt(editEntryUserId.getText().toString());
+                accountId = editEntryUserId.getText().toString();
                 if (!editEntryUserNote.getText().equals("")){
                     accountInfo = editEntryUserNote.getText().toString();
                     Account account = new Account(accountId,accountDate,accountInfo);
-                    dbManager.add(account);
+                    if(!dbManager.isAccountExist(account))
+                    {
+                        dbManager.add(account);
+                    }else{
+                        Toast.makeText(mContext, "此用户已经保存", Toast.LENGTH_LONG).show();
+                    }
                 }else{
                     Toast.makeText(mContext, "用户信息为空，请输入用户信息", Toast.LENGTH_LONG).show();
                 }
