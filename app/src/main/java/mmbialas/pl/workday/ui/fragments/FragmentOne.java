@@ -22,11 +22,14 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import mmbialas.pl.workday.R;
 import mmbialas.pl.workday.data.DateEntry;
+import mmbialas.pl.workday.database.Account;
+import mmbialas.pl.workday.database.DBManager;
 
 /**
  * Created by Michal Bialas on 19/07/14.
  */
 public class FragmentOne extends Fragment implements View.OnClickListener {
+
 
 
     private SimpleDateFormat formatter = new SimpleDateFormat("yyyy年MM月dd日");
@@ -35,6 +38,11 @@ public class FragmentOne extends Fragment implements View.OnClickListener {
     private Calendar expireCalender;
     private Context mContext;
     private Date mDate;
+    private DBManager dbManager;
+    private int accountId;
+    private String accountDate;
+    private String accountInfo;
+
 
     private DateEntry currDateEntry;
 
@@ -69,6 +77,11 @@ public class FragmentOne extends Fragment implements View.OnClickListener {
     Button btnSave;
     @InjectView(R.id.expireResult)
     TextView expireResult;
+    @InjectView(R.id.entryDate)
+    TextView entryDate;
+    @InjectView(R.id.editEntryUserNote)
+    EditText editEntryUserNote;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup containter,
@@ -83,6 +96,9 @@ public class FragmentOne extends Fragment implements View.OnClickListener {
         btnCalcExpire.setOnClickListener(this);
         btnSave.setOnClickListener(this);
 
+        // 初始化DBManager
+        dbManager = new DBManager(mContext);
+
         return view;
     }
 
@@ -90,6 +106,7 @@ public class FragmentOne extends Fragment implements View.OnClickListener {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        dbManager.closeDB();// 释放数据库资源
         ButterKnife.reset(this);
     }
 
@@ -110,6 +127,7 @@ public class FragmentOne extends Fragment implements View.OnClickListener {
                 calcExpire(mDate, calendar);
                 break;
             case R.id.btnSave:
+                saveAccountToDatebase();
                 break;
             case R.id.btnGetToday:
                 mDate = new Date(System.currentTimeMillis());
@@ -419,9 +437,30 @@ public class FragmentOne extends Fragment implements View.OnClickListener {
 
         //Toast.makeText(mContext, "month = " + (expireCalender.get(Calendar.MONTH) + 1) +
         //        " Day = " + expireCalender.get(Calendar.DAY_OF_MONTH), Toast.LENGTH_LONG).show();
+        accountDate = "2016年" + (expireCalender.get(Calendar.MONTH) + 1) + "月" + expireCalender.get(Calendar.DAY_OF_MONTH) + "日";
         expireResult.setText("到期日为 2016 年" + (expireCalender.get(Calendar.MONTH) + 1) + " 月 " +
                 expireCalender.get(Calendar.DAY_OF_MONTH) + " 日 ");
 
+    }
+
+
+    private void saveAccountToDatebase() {
+        if (accountDate != null && !accountDate.equals("")) {
+            if (!editEntryUserId.getText().equals("")) {
+                accountId = Integer.parseInt(editEntryUserId.getText().toString());
+                if (!editEntryUserNote.getText().equals("")){
+                    accountInfo = editEntryUserNote.getText().toString();
+                    Account account = new Account(accountId,accountDate,accountInfo);
+                    dbManager.add(account);
+                }else{
+                    Toast.makeText(mContext, "用户信息为空，请输入用户信息", Toast.LENGTH_LONG).show();
+                }
+            } else {
+                Toast.makeText(mContext, "户号为空，请输入户号", Toast.LENGTH_LONG).show();
+            }
+        } else {
+            Toast.makeText(mContext, "请计算到期日", Toast.LENGTH_LONG).show();
+        }
     }
 
 
