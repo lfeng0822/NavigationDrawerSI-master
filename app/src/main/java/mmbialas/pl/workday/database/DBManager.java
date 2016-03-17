@@ -56,10 +56,8 @@ public class DBManager {
         Cursor cursor = null;
         boolean isExist = false;
         int accountId = account._id;
-        String sql = "";
-        //String sql = select count( *)as c from sqlite_master where type = 'table' and name = '+tabName.trim()+';
         try {
-            cursor = db.rawQuery("SELECT * FROM " + DatabaseHelper.TABLE_NAME, null);
+            cursor = db.rawQuery("SELECT * FROM " + DatabaseHelper.TABLE_NAME + "where _id =" + accountId, null);
             if (cursor.moveToNext()) {
                 int count = cursor.getInt(0);
                 if (count > 0) {
