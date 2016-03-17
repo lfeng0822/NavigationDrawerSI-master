@@ -4,11 +4,51 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/titleForList">
+
+        <TextView
+            android:id="@+id/accountIdTitle"
+            android:layout_width="220px"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="户号"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#aa2309"/>
+
+        <TextView
+            android:id="@+id/expireDateTitle"
+            android:layout_width="270px"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/accountIdTitle"
+            android:layout_toRightOf="@id/accountIdTitle"
+            android:textSize="15sp"
+            android:text="到期日"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#aa2309"/>
+
+        <TextView
+            android:id="@+id/accountInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/expireDateTitle"
+            android:layout_toRightOf="@id/expireDateTitle"
+            android:textSize="15sp"
+            android:text="信息备注"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#aa2309"/>
+    </RelativeLayout>
+
     <ListView
         android:id="@+id/list_items"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:divider="#ffffff"
-        android:dividerHeight="1dip" />
+        android:divider="#aa2309"
+        android:dividerHeight="1dip"
+        android:footerDividersEnabled="true"
+        android:layout_below="@id/titleForList"/>
 
 </RelativeLayout>
